@@ -1,0 +1,50 @@
+.App {
+  display: grid;
+  grid-template-columns: 1em auto 1em;
+  grid-template-rows: 10em auto 1em 5em;
+
+  text-align: center;
+}
+
+.head_block {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.content_block {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+.footer_block {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  background-color: gray;
+}
+.footer_block nav {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.footer_block a {
+  margin-right: 1em;
+  color: white;
+}
+
+form {
+  width: 100%;
+}
+
+form input {
+  width: 100%;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+  text-align: left;
+}
