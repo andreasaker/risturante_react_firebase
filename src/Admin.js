@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import Footer from "./components/Footer";
 import AddCoursesForm from "./components/AddCourseForm";
-import CourseList from "./components/CourseList";
+import CategoryList from "./components/CategoryList";
 import AddCategoryForm from "./components/AddCategoryForm";
 
 export default function Admin() {
@@ -15,7 +15,7 @@ export default function Admin() {
       <div className="content_block">
         <AddCoursesForm />
         <AddCategoryForm />
-        <CourseList />
+        <CategoryList />
       </div>
       <div className="footer_block">
         <Footer />

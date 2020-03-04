@@ -7,7 +7,6 @@ const AddCourseForm = ({ categories, createCourse }) => {
     title: "",
     content: "",
     price: "",
-    category: "",
     category_id: ""
   };
   const [course, setCourse] = useState(initCourse);
@@ -46,7 +45,7 @@ const AddCourseForm = ({ categories, createCourse }) => {
         onChange={e => handleChange(e)}
         value={course.price}
       />
-      <select onChange={e => handleChange(e)}>
+      <select name="category_id" onChange={e => handleChange(e)}>
         <option>-- Choose category --</option>
         {categories.map(c => {
           return (
