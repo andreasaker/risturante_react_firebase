@@ -20,9 +20,19 @@ const categories = (state = [], action) => {
   }
 };
 
+const loggedIn = (state = false, action) => {
+  switch (action.type) {
+    case "LOGGED_IN":
+      return !state;
+    default:
+      return state;
+  }
+};
+
 const reducers = combineReducers({
   courses,
-  categories
+  categories,
+  loggedIn
 });
 
 export default reducers;

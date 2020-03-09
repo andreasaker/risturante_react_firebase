@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import AddCoursesForm from "./components/AddCourseForm";
 import CategoryList from "./components/CategoryList";
 import AddCategoryForm from "./components/AddCategoryForm";
+import Authentication from "./components/Authentication";
 
 export default function Admin() {
   return (
@@ -13,6 +14,7 @@ export default function Admin() {
         <h2>Start adding food!</h2>
       </div>
       <div className="content_block">
+        <Authentication />
         <AddCoursesForm />
         <AddCategoryForm />
         <CategoryList />
