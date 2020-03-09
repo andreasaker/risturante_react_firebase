@@ -5,6 +5,8 @@ import { loggedIn } from "../redux/actions";
 const Authentication = ({ setStatus }) => {
   const loginInit = { username: "", password: "" };
   const [loginInfo, setLoginInfo] = useState(loginInit);
+  const USERNAME = JSON.stringify(process.env.USERNAME);
+  const PASSWORD = process.env.PASSWORD;
 
   const handleChange = e => {
     e.preventDefault();
@@ -14,24 +16,37 @@ const Authentication = ({ setStatus }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setStatus(true);
-    setLoginInfo(loginInit);
+
+    if (loginInfo.username === USERNAME && loginInfo.password === PASSWORD) {
+      setStatus(true);
+      setLoginInfo(loginInit);
+    } else {
+      console.log("wrong");
+    }
   };
 
   return (
     <form onSubmit={e => handleSubmit(e)}>
+      <div className="title">Log in</div>
       <input
+        required
         type="text"
         name="username"
         value={loginInfo.username}
         onChange={e => handleChange(e)}
+        placeholder="Username"
       />
       <input
+        required
         type="password"
         name="password"
         value={loginInfo.password}
         onChange={e => handleChange(e)}
+        placeholder="Password"
       />
+      {loginInfo.username} {USERNAME}
+      <br />
+      {loginInfo.password} {PASSWORD}
       <button>Login</button>
     </form>
   );
