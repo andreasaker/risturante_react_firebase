@@ -1,7 +1,7 @@
-Coded on codesandbox.io<br/>
-<br/>
-Create react app with redux<br/>
-<br/>
+Coded on codesandbox.io
+
+Create react app with redux
+
 dotenv variables:
 USERNAME=
 PASSWORD=
