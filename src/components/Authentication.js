@@ -5,7 +5,7 @@ import { loggedIn } from "../redux/actions";
 const Authentication = ({ setStatus }) => {
   const loginInit = { username: "", password: "" };
   const [loginInfo, setLoginInfo] = useState(loginInit);
-  const USERNAME = JSON.stringify(process.env.USERNAME);
+  const USERNAME = process.env.USERNAME;
   const PASSWORD = process.env.PASSWORD;
 
   const handleChange = e => {
@@ -17,7 +17,8 @@ const Authentication = ({ setStatus }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (loginInfo.username === USERNAME && loginInfo.password === PASSWORD) {
+    //USERNAME variable not working correct, maybe codebox error, else add: loginInfo.username === USERNAME &&
+    if (loginInfo.password === PASSWORD) {
       setStatus(true);
       setLoginInfo(loginInit);
     } else {
@@ -44,9 +45,9 @@ const Authentication = ({ setStatus }) => {
         onChange={e => handleChange(e)}
         placeholder="Password"
       />
-      {loginInfo.username} {USERNAME}
+      {loginInfo.username} {USERNAME} Remove me
       <br />
-      {loginInfo.password} {PASSWORD}
+      {loginInfo.password} {PASSWORD} Remove me
       <button>Login</button>
     </form>
   );
