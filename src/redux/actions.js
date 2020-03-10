@@ -15,6 +15,14 @@ export const editCourse = (id, course) => ({
   }
 });
 
+export const setEditCourse = (id, status) => ({
+  type: "SET_EDIT_COURSE",
+  payload: {
+    id: id,
+    status: status
+  }
+});
+
 let catId = 0;
 export const addCategory = name => ({
   type: "ADD_CATEGORY",

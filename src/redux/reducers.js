@@ -3,8 +3,24 @@ import { combineReducers } from "redux";
 const courses = (state = [], action) => {
   switch (action.type) {
     case "ADD_COURSE":
-      const { id, course } = action.payload;
-      return [...state, { ...course, id: id }]; //Object i objekt
+      return [...state, { ...action.payload.course, id: action.payload.id }];
+    case "EDIT_COURSE":
+      console.log(action.payload.course);
+      const newstate = state.map(s =>
+        s.id === action.payload.id
+          ? (s.course = action.payload.course)
+          : s.course
+      );
+      return newstate;
+    default:
+      return state;
+  }
+};
+
+const setEditCourse = (state = { id: "", status: false }, action) => {
+  switch (action.type) {
+    case "SET_EDIT_COURSE":
+      return { id: action.payload.id, status: action.payload.status };
     default:
       return state;
   }
@@ -32,7 +48,8 @@ const loggedIn = (state = false, action) => {
 const reducers = combineReducers({
   courses,
   categories,
-  loggedIn
+  loggedIn,
+  setEditCourse
 });
 
 export default reducers;
