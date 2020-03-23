@@ -75,6 +75,7 @@ form button {
   background-color: #f0134d;
   padding: 0;
   cursor: pointer;
+  margin-top: 0.5em;
 }
 
 form button:hover {
@@ -89,6 +90,17 @@ form button:hover {
 
 .ok-btn:hover {
   color: #40bfc1;
+}
+
+.second-btn {
+  border-color: #ff6f5e;
+  background-color: #ffffff;
+  color: #ff6f5e;
+}
+
+.second-btn:hover {
+  color: #ffffff;
+  background-color: #ff6f5e;
 }
 
 form select {

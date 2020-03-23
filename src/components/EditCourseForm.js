@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { editCourse, setEditCourse } from "../redux/actions";
 
@@ -23,6 +23,17 @@ const EditCourseForm = ({ categories, editCourse, currentCourse, setEdit }) => {
     setEdit(false);
     setCourse(initCourse);
   };
+
+  const handleQuitEdit = e => {
+    e.preventDefault();
+    setCourse(initCourse);
+    setEdit(false);
+  };
+
+  useEffect(() => {
+    setCourse(...currentCourse);
+  }),
+    [currentCourse];
 
   return (
     <form>
@@ -63,6 +74,9 @@ const EditCourseForm = ({ categories, editCourse, currentCourse, setEdit }) => {
       </select>
       <button className="ok-btn" name="edittodo" onClick={e => handleSubmit(e)}>
         Edit
+      </button>
+      <button className="second-btn" onClick={e => handleQuitEdit(e)}>
+        Close edit
       </button>
     </form>
   );
