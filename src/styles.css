@@ -7,6 +7,14 @@ Blue: #40bfc1
 
 Palette from https://colorhunt.co/palette/168306
 By: Gal Shir https://galshir.com/?ref=colorhunt_bar
+
+
+
+
+font-family: 'Quicksand', sans-serif;
+font-family: 'Kalam', cursive;
+
+
 */
 
 .App {
@@ -15,6 +23,7 @@ By: Gal Shir https://galshir.com/?ref=colorhunt_bar
   grid-template-rows: 10em auto 1em 5em;
 
   text-align: center;
+  font-family: "Quicksand", sans-serif;
 }
 
 .head_block {
@@ -71,6 +80,7 @@ form button {
   border-width: 2px;
   border-color: #f0134d;
   border-style: solid;
+  font-weight: bold;
   color: #f5f0e3;
   background-color: #f0134d;
   padding: 0;
