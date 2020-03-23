@@ -4,11 +4,12 @@ import Footer from "./components/Footer";
 import AddCoursesForm from "./components/AddCourseForm";
 import EditCoursesForm from "./components/EditCourseForm";
 import CategoryList from "./components/CategoryList";
+import EditCategoryForm from "./components/EditCategoryForm";
 import AddCategoryForm from "./components/AddCategoryForm";
 import Authentication from "./components/Authentication";
 import { connect } from "react-redux";
 
-const Admin = ({ loggedIn, editCourse }) => {
+const Admin = ({ loggedIn, editCourse, editCategory }) => {
   return (
     <div className="App">
       <div className="head_block">
@@ -16,11 +17,11 @@ const Admin = ({ loggedIn, editCourse }) => {
         <h2>Start adding food!</h2>
       </div>
       <div className="content_block">
-        {loggedIn ? (
+        {!loggedIn ? (
           <div>
             {editCourse ? <EditCoursesForm /> : <AddCoursesForm />}
 
-            <AddCategoryForm />
+            {editCategory ? <EditCategoryForm /> : <AddCategoryForm />}
             <CategoryList />
           </div>
         ) : (
@@ -36,7 +37,8 @@ const Admin = ({ loggedIn, editCourse }) => {
 
 const mapStatetoProps = state => ({
   loggedIn: state.loggedIn,
-  editCourse: state.setEditCourse.status
+  editCourse: state.setEditCourse.status,
+  editCategory: state.setEditCategory.status
 });
 
 export default connect(mapStatetoProps)(Admin);

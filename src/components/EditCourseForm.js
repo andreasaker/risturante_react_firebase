@@ -61,7 +61,7 @@ const EditCourseForm = ({ categories, editCourse, currentCourse, setEdit }) => {
           );
         })}
       </select>
-      <button name="edittodo" onClick={e => handleSubmit(e)}>
+      <button className="ok-btn" name="edittodo" onClick={e => handleSubmit(e)}>
         Edit
       </button>
     </form>

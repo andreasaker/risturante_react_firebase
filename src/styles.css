@@ -67,7 +67,7 @@ form input:focus {
 
 form button {
   width: 100%;
-  height: 2em;
+  height: 3em;
   border-width: 2px;
   border-color: #f0134d;
   border-style: solid;
@@ -80,6 +80,15 @@ form button {
 form button:hover {
   background-color: #ffffff;
   color: #f0134d;
+}
+
+.ok-btn {
+  border-color: #40bfc1;
+  background-color: #40bfc1;
+}
+
+.ok-btn:hover {
+  color: #40bfc1;
 }
 
 form select {

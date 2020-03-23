@@ -31,6 +31,21 @@ const categories = (state = [], action) => {
     case "ADD_CATEGORY":
       const { id, name } = action.payload;
       return [...state, { name, id }];
+    case "EDIT_CATEGORY":
+      console.log(action);
+      const newstate = state.map(s =>
+        s.id === action.payload.id ? (s.name = action.payload.name) : s
+      );
+      return newstate;
+    default:
+      return state;
+  }
+};
+
+const setEditCategory = (state = { id: "", status: false }, action) => {
+  switch (action.type) {
+    case "SET_EDIT_CATEGORY":
+      return { id: action.payload.id, status: action.payload.status };
     default:
       return state;
   }
@@ -49,7 +64,8 @@ const reducers = combineReducers({
   courses,
   categories,
   loggedIn,
-  setEditCourse
+  setEditCourse,
+  setEditCategory
 });
 
 export default reducers;

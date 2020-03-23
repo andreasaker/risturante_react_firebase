@@ -1,4 +1,4 @@
-let courseId = 0;
+let courseId = -1;
 export const addCourse = course => ({
   type: "ADD_COURSE",
   payload: {
@@ -23,12 +23,28 @@ export const setEditCourse = (id, status) => ({
   }
 });
 
-let catId = 0;
+let catId = -1;
 export const addCategory = name => ({
   type: "ADD_CATEGORY",
   payload: {
     id: ++catId,
     name
+  }
+});
+
+export const editCategory = (id, name) => ({
+  type: "EDIT_CATEGORY",
+  payload: {
+    id: id,
+    name: name
+  }
+});
+
+export const setEditCategory = (id, status) => ({
+  type: "SET_EDIT_CATEGORY",
+  payload: {
+    id: id,
+    status: status
   }
 });
 
