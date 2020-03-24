@@ -25,8 +25,7 @@ const EditCategoryForm = ({ editCategory, currentCategory, setEdit }) => {
 
   useEffect(() => {
     setName(currentCategory[0].name);
-  }),
-    [currentCategory[0]];
+  },[currentCategory]);
 
   return (
     <form>

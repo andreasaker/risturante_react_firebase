@@ -32,8 +32,7 @@ const EditCourseForm = ({ categories, editCourse, currentCourse, setEdit }) => {
 
   useEffect(() => {
     setCourse(...currentCourse);
-  }),
-    [currentCourse];
+  },[currentCourse]);
 
   return (
     <form>

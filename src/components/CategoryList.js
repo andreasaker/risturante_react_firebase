@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Category from "./Category";
 
-const CategoryList = ({ categories, courses }) => {
+const CategoryList = ({ categories }) => {
   return (
     <ul className="category_list">
       {categories.map(cat => {
@@ -13,8 +13,7 @@ const CategoryList = ({ categories, courses }) => {
 };
 
 const mapStateToProps = state => ({
-  categories: state.categories,
-  courses: state.courses
+  categories: state.categories
 });
 
 export default connect(mapStateToProps)(CategoryList);
