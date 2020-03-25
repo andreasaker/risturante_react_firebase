@@ -3,18 +3,16 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import App from "./App";
 import Admin from "./Admin";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducers from "./redux/reducers";
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
+import {store, rrfProps} from "./redux/store";
+
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+    <ReactReduxFirebaseProvider {...rrfProps}>
       <Router>
         <Switch>
           <Route path="/admin">
@@ -25,6 +23,7 @@ ReactDOM.render(
           </Route>
         </Switch>
       </Router>
+      </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
   rootElement
