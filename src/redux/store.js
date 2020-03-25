@@ -5,22 +5,10 @@ import {courses,
     setEditCourse,
     setEditCategory} from "./reducers";
 
-//const store = createStore(
-//  reducers,
-//  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-//);
-
-
-
 import firebase from 'firebase/app'
-//import 'firebase/auth'
-import 'firebase/firestore' // <- needed if using firestore
-// import 'firebase/functions' // <- needed if using httpsCallable
-import { createStore, combineReducers, compose } from 'redux'
-import {
-  firebaseReducer
-} from 'react-redux-firebase'
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' // <- needed if using firestore
+import 'firebase/firestore' 
+import { createStore, combineReducers } from 'redux'
+import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' 
 
 const fbConfig = {
   apiKey: process.env.FB_API_KEY,
@@ -38,16 +26,10 @@ const rrfConfig = {
   useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
 }
 
-// Initialize firebase instance
 firebase.initializeApp(fbConfig)
+firebase.firestore()
 
-// Initialize other services on firebase instance
-firebase.firestore() // <- needed if using firestore
-// firebase.functions() // <- needed if using httpsCallable
-
-// Add firebase to reducers
 const rootReducer = combineReducers({
-  firebase: firebaseReducer,
   courses,
   categories,
   loggedIn,
@@ -56,7 +38,6 @@ const rootReducer = combineReducers({
   firestore: firestoreReducer // <- needed if using firestore
 })
 
-// Create store with reducers and initial state
 const initialState = {}
 export const store = createStore(rootReducer, initialState,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
@@ -65,5 +46,5 @@ export const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance // <- needed if using firestore
+  createFirestoreInstance 
 }
