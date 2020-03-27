@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { setEditCategory } from "../redux/actions";
 
 const Category = ({ category, setEdit }) => {
+  console.log(category)
   return (
     <li key={category.id}>
       <strong>{category.name}</strong>

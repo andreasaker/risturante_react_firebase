@@ -1,24 +1,18 @@
 import React from "react";
-import { useSelector, connect } from "react-redux";
+import { connect } from "react-redux";
+import { compose } from "redux"
+import { firestoreConnect, isLoaded } from 'react-redux-firebase'
 import Category from "./Category";
-import { useFirestoreConnect, isLoaded } from 'react-redux-firebase'
-
 
 const CategoryList = ({ categories }) => {
 
-  useFirestoreConnect([
-    { collection: 'categories' }
-  ])
-  const cate = useSelector(state => state.firestore.ordered.categories)
-  console.log(cate)
-
-  if(!isLoaded(cate)){
+  if(!isLoaded(categories)){
     return <p>loading</p>
   }
 
   return (
     <ul className="category_list">
-      {cate.map(cat => {
+      {categories.map(cat => {
         return <Category key={cat.id} category={cat} />;
       })}
     </ul>
@@ -26,7 +20,10 @@ const CategoryList = ({ categories }) => {
 };
 
 const mapStateToProps = state => ({
-  categories: state.categories
+  categories: state.firestore.ordered.categories
 });
 
-export default connect(mapStateToProps)(CategoryList);
+export default compose(
+  firestoreConnect(() => ['categories']),
+  connect(mapStateToProps)
+)(CategoryList);
