@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 import { editCategory, setEditCategory } from "../redux/actions";
 
 const EditCategoryForm = ({ editCategory, currentCategory, setEdit }) => {
   const [name, setName] = useState(currentCategory[0].name);
-  console.log(...currentCategory);
   const handleChange = e => {
     const newName = e.target.value;
     setName(newName);
@@ -27,6 +28,7 @@ const EditCategoryForm = ({ editCategory, currentCategory, setEdit }) => {
     setName(currentCategory[0].name);
   },[currentCategory]);
 
+
   return (
     <form>
       <p>Add new category</p>
@@ -48,7 +50,7 @@ const EditCategoryForm = ({ editCategory, currentCategory, setEdit }) => {
 };
 
 const mapStateToProps = state => ({
-  currentCategory: state.categories.filter(
+  currentCategory: state.firestore.ordered.categories.filter(
     c => c.id === state.setEditCategory.id
   )
 });
@@ -58,7 +60,10 @@ const mapDispatchToProps = dispatch => ({
   setEdit: status => dispatch(setEditCategory(status))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  firestoreConnect(() => ['categories']),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(EditCategoryForm);

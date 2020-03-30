@@ -7,8 +7,11 @@ import {courses,
 
 import firebase from 'firebase/app'
 import 'firebase/firestore' 
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' 
+import thunk from 'redux-thunk';
+import { getFirestore } from 'redux-firestore';
+import { getFirebase } from 'react-redux-firebase';
 
 const fbConfig = {
   apiKey: process.env.FB_API_KEY,
@@ -38,9 +41,13 @@ const rootReducer = combineReducers({
   firestore: firestoreReducer // <- needed if using firestore
 })
 
+const middleware = compose(
+  applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 const initialState = {}
-export const store = createStore(rootReducer, initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+export const store = createStore(rootReducer, initialState, middleware)
 
 export const rrfProps = {
   firebase,
