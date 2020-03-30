@@ -9,7 +9,6 @@ const CategoryList = ({ categories }) => {
   if(!isLoaded(categories)){
     return <p>loading</p>
   }
-
   return (
     <ul className="category_list">
       {categories.map(cat => {

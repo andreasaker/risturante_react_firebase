@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 
 export const courses = (state = [], action) => {
   switch (action.type) {
@@ -33,11 +31,8 @@ export const categories = (state = [], action) => {
       const { id, name } = action.payload;
       return [...state, { name, id }];
     case "EDIT_CATEGORY":
-      console.log(action);
-      const newstate = state.map(s =>
-        s.id === action.payload.id ? (s.name = action.payload.name) : s
-      );
-      return newstate;
+      console.log(`Category with id: ${action.payload.id} edited`);
+      return state;
     default:
       return state;
   }

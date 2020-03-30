@@ -8,9 +8,8 @@ import {courses,
 import firebase from 'firebase/app'
 import 'firebase/firestore' 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' 
+import { reduxFirestore, getFirestore, createFirestoreInstance, firestoreReducer } from 'redux-firestore' 
 import thunk from 'redux-thunk';
-import { getFirestore } from 'redux-firestore';
 import { getFirebase } from 'react-redux-firebase';
 
 const fbConfig = {
@@ -43,6 +42,7 @@ const rootReducer = combineReducers({
 
 const middleware = compose(
   applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
+  reduxFirestore(firebase, fbConfig),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

@@ -31,7 +31,7 @@ const EditCategoryForm = ({ editCategory, currentCategory, setEdit }) => {
 
   return (
     <form>
-      <p>Add new category</p>
+      <p>Edit category</p>
       <input
         type="text"
         name="name"
@@ -56,7 +56,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  editCategory: category => dispatch(editCategory(category.id, category)),
+  editCategory: category => dispatch(editCategory(category.id, category.name)),
   setEdit: status => dispatch(setEditCategory(status))
 });
 

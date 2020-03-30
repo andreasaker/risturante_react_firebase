@@ -7,14 +7,21 @@ export const addCourse = course => ({
   }
 });
 
-export const editCourse = (id, course) => ({
-  type: "EDIT_COURSE",
-  payload: {
-    id,
-    course
-  }
-});
+export const editCourse = (course) => { //wrong
+  return(dispatch, {getFirestore}) => {
+    const firestore = getFirestore();
+    firestore.collection('categories').doc(course.id).update({
+      ...course,
+      updatedAt: new Date()
+    }).then(()=>{
+      dispatch({type: "EDIT_COURSE", course});
+    }).catch((err) => {
+      console.log(err)
+    })
 
+  }
+}
+ 
 export const setEditCourse = (id, status) => ({
   type: "SET_EDIT_COURSE",
   payload: {
@@ -32,13 +39,21 @@ export const addCategory = name => ({
   }
 });
 
-export const editCategory = (id, name) => ({
-  type: "EDIT_CATEGORY",
-  payload: {
-    id: id,
-    name: name
+
+export const editCategory = (id, name) => {
+  return(dispatch, getState, {getFirebase, getFirestore}) => {
+    const firestore = getFirestore();
+    firestore.collection('categories').doc(id).update({
+      name: name,
+      updatedAt: new Date()
+    }).then(()=>{
+      dispatch({type: "EDIT_CATEGORY", id, name});
+    }).catch((err) => {
+      console.log(err)
+    })
+
   }
-});
+}
 
 export const setEditCategory = (id, status) => ({
   type: "SET_EDIT_CATEGORY",
