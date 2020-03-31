@@ -1,27 +1,39 @@
-let courseId = -1;
-export const addCourse = course => ({
-  type: "ADD_COURSE",
-  payload: {
-    id: ++courseId,
-    course
-  }
-});
-
-export const editCourse = (course) => { //wrong
-  return(dispatch, {getFirestore}) => {
+export const addCourse = course => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    firestore.collection('categories').doc(course.id).update({
-      ...course,
-      updatedAt: new Date()
-    }).then(()=>{
-      dispatch({type: "EDIT_COURSE", course});
-    }).catch((err) => {
-      console.log(err)
-    })
+    console.log(course);
+    firestore
+      .collection("courses")
+      .add({
+        ...course
+      })
+      .then(() => dispatch({ type: "ADD_COURSE", course }))
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
 
-  }
-}
- 
+export const editCourse = course => {
+  //wrong
+  return (dispatch, { getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("categories")
+      .doc(course.id)
+      .update({
+        ...course,
+        updatedAt: new Date()
+      })
+      .then(() => {
+        dispatch({ type: "EDIT_COURSE", course });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
 export const setEditCourse = (id, status) => ({
   type: "SET_EDIT_COURSE",
   payload: {
@@ -30,30 +42,53 @@ export const setEditCourse = (id, status) => ({
   }
 });
 
-let catId = -1;
-export const addCategory = name => ({
-  type: "ADD_CATEGORY",
-  payload: {
-    id: ++catId,
-    name
-  }
-});
-
+export const addCategory = name => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("categories")
+      .add({
+        name: name
+      })
+      .then(() => dispatch({ type: "ADD_CATEGORY", name }))
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
 
 export const editCategory = (id, name) => {
-  return(dispatch, getState, {getFirebase, getFirestore}) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    firestore.collection('categories').doc(id).update({
-      name: name,
-      updatedAt: new Date()
-    }).then(()=>{
-      dispatch({type: "EDIT_CATEGORY", id, name});
-    }).catch((err) => {
-      console.log(err)
-    })
+    firestore
+      .collection("categories")
+      .doc(id)
+      .update({
+        name: name,
+        updatedAt: new Date()
+      })
+      .then(() => {
+        dispatch({ type: "EDIT_CATEGORY", id, name });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
 
-  }
-}
+export const removeCategory = id => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("categories")
+      .doc(id)
+      .delete()
+      .then(() => dispatch({ type: "REMOVE_CATEGORY", id }))
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
 
 export const setEditCategory = (id, status) => ({
   type: "SET_EDIT_CATEGORY",

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { firestoreConnect, isLoaded } from "react-redux-firebase";
 import { addCourse } from "../redux/actions";
 
 const AddCourseForm = ({ categories, createCourse }) => {
@@ -47,13 +49,14 @@ const AddCourseForm = ({ categories, createCourse }) => {
       />
       <select name="category_id" onChange={e => handleChange(e)}>
         <option>-- Choose category --</option>
-        {categories.map(c => {
-          return (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          );
-        })}
+        {isLoaded(categories) &&
+          categories.map(c => {
+            return (
+              <option key={c.id} value={`${c.id}`}>
+                {c.name}
+              </option>
+            );
+          })}
       </select>
       <button name="add todo" onClick={e => handleSubmit(e)}>
         Add
@@ -63,14 +66,14 @@ const AddCourseForm = ({ categories, createCourse }) => {
 };
 
 const mapStateToProps = state => ({
-  categories: state.categories
+  categories: state.firestore.ordered.categories
 });
 
 const mapDispatchToProps = dispatch => ({
   createCourse: course => dispatch(addCourse(course))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  firestoreConnect(() => ["categories"]),
+  connect(mapStateToProps, mapDispatchToProps)
 )(AddCourseForm);

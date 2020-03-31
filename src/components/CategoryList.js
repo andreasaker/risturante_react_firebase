@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { compose } from "redux"
-import { firestoreConnect, isLoaded } from 'react-redux-firebase'
+import { compose } from "redux";
+import { firestoreConnect, isLoaded } from "react-redux-firebase";
 import Category from "./Category";
 
 const CategoryList = ({ categories }) => {
-
-  if(!isLoaded(categories)){
-    return <p>loading</p>
+  if (!isLoaded(categories)) {
+    return <p>loading</p>;
   }
   return (
     <ul className="category_list">
@@ -23,6 +22,6 @@ const mapStateToProps = state => ({
 });
 
 export default compose(
-  firestoreConnect(() => ['categories']),
+  firestoreConnect(() => ["categories"]),
   connect(mapStateToProps)
 )(CategoryList);

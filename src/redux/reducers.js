@@ -1,8 +1,8 @@
-
 export const courses = (state = [], action) => {
   switch (action.type) {
     case "ADD_COURSE":
-      return [...state, { ...action.payload.course, id: action.payload.id }];
+      console.log(`Course added with name: ${action.title}`);
+      return state;
     case "EDIT_COURSE":
       console.log(action.payload.course);
       const newstate = state.map(s =>
@@ -28,10 +28,13 @@ export const setEditCourse = (state = { id: "", status: false }, action) => {
 export const categories = (state = [], action) => {
   switch (action.type) {
     case "ADD_CATEGORY":
-      const { id, name } = action.payload;
-      return [...state, { name, id }];
+      console.log(`Category added with name: ${action.name}`);
+      return state;
     case "EDIT_CATEGORY":
-      console.log(`Category with id: ${action.payload.id} edited`);
+      console.log(`Category edited with id: ${action.id} `);
+      return state;
+    case "REMOVE_CATEGORY":
+      console.log(`Category removed with id: ${action.id} `);
       return state;
     default:
       return state;

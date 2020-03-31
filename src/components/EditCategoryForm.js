@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { compose } from 'redux'
-import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 import { editCategory, setEditCategory } from "../redux/actions";
 
 const EditCategoryForm = ({ editCategory, currentCategory, setEdit }) => {
@@ -26,8 +26,7 @@ const EditCategoryForm = ({ editCategory, currentCategory, setEdit }) => {
 
   useEffect(() => {
     setName(currentCategory[0].name);
-  },[currentCategory]);
-
+  }, [currentCategory]);
 
   return (
     <form>
@@ -61,9 +60,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
-  firestoreConnect(() => ['categories']),
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+  firestoreConnect(() => ["categories"]),
+  connect(mapStateToProps, mapDispatchToProps)
 )(EditCategoryForm);
