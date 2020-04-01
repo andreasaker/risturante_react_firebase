@@ -17,7 +17,7 @@ const Admin = ({ loggedIn, editCourse, editCategory }) => {
         <h2>Start adding food!</h2>
       </div>
       <div className="content_block">
-        {!loggedIn ? (
+        {loggedIn ? (
           <div>
             {editCourse ? <EditCoursesForm /> : <AddCoursesForm />}
 

@@ -126,3 +126,10 @@ ul li {
   list-style: none;
   text-align: left;
 }
+
+.error_msg {
+  width: 100%;
+  color: #f5f0e3;
+  background-color: #ff6f5e;
+  padding: 0.5em 0 0.5em 0;
+}

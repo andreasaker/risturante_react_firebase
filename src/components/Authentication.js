@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { loggedIn } from "../redux/actions";
 
-const Authentication = ({ setStatus }) => {
+const Authentication = ({ setLoginStatus }) => {
   const loginInit = { username: "", password: "" };
   const [loginInfo, setLoginInfo] = useState(loginInit);
-  const USERNAME = process.env.USERNAME;
-  const PASSWORD = process.env.PASSWORD;
+
+  const errorInit = { status: false, msg: "" };
+  const [error, setError] = useState(errorInit);
+
+  const USERNAME = process.env.REACT_APP_USERNAME;
+  const PASSWORD = process.env.REACT_APP_PASSWORD;
 
   const handleChange = e => {
     e.preventDefault();
@@ -16,13 +20,14 @@ const Authentication = ({ setStatus }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    //USERNAME variable not working correct, maybe codebox error, else add: loginInfo.username === USERNAME &&
-    if (loginInfo.password === PASSWORD) {
-      setStatus(true);
+    if (loginInfo.password === PASSWORD && loginInfo.username === USERNAME) {
+      setLoginStatus(true);
       setLoginInfo(loginInit);
     } else {
-      console.log("wrong");
+      setError({
+        status: true,
+        msg: "The Username or Password is incorrect. Try again."
+      });
     }
   };
 
@@ -45,19 +50,14 @@ const Authentication = ({ setStatus }) => {
         onChange={e => handleChange(e)}
         placeholder="Password"
       />
-      {loginInfo.username} {USERNAME} Remove me
-      <br />
-      {loginInfo.password} {PASSWORD} Remove me
+      {error.status && <div className="error_msg">{error.msg}</div>}
       <button>Login</button>
     </form>
   );
 };
 
 const mapDisptachToProps = dispatch => ({
-  setStatus: status => dispatch(loggedIn(status))
+  setLoginStatus: status => dispatch(loggedIn(status))
 });
 
-export default connect(
-  null,
-  mapDisptachToProps
-)(Authentication);
+export default connect(null, mapDisptachToProps)(Authentication);
