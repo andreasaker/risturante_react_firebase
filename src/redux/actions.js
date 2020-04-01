@@ -15,11 +15,10 @@ export const addCourse = course => {
 };
 
 export const editCourse = course => {
-  //wrong
-  return (dispatch, { getFirestore }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     firestore
-      .collection("categories")
+      .collection("courses")
       .doc(course.id)
       .update({
         ...course,

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 import { editCourse, setEditCourse } from "../redux/actions";
 
 const EditCourseForm = ({ categories, editCourse, currentCourse, setEdit }) => {
@@ -32,7 +34,7 @@ const EditCourseForm = ({ categories, editCourse, currentCourse, setEdit }) => {
 
   useEffect(() => {
     setCourse(...currentCourse);
-  },[currentCourse]);
+  }, [currentCourse]);
 
   return (
     <form>
@@ -82,16 +84,18 @@ const EditCourseForm = ({ categories, editCourse, currentCourse, setEdit }) => {
 };
 
 const mapStateToProps = state => ({
-  categories: state.categories,
-  currentCourse: state.courses.filter(c => c.id === state.setEditCourse.id)
+  categories: state.firestore.ordered.categories,
+  currentCourse: state.firestore.ordered.courses.filter(
+    c => c.id === state.setEditCourse.id
+  )
 });
 
 const mapDispatchToProps = dispatch => ({
-  editCourse: course => dispatch(editCourse(course.id, course)),
+  editCourse: course => dispatch(editCourse(course)),
   setEdit: status => dispatch(setEditCourse(status))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  firestoreConnect(() => ["categories"]),
+  connect(mapStateToProps, mapDispatchToProps)
 )(EditCourseForm);

@@ -1,16 +1,12 @@
 export const courses = (state = [], action) => {
   switch (action.type) {
     case "ADD_COURSE":
-      console.log(`Course added with name: ${action.title}`);
+      console.log(`Course added with name: ${action.course.title}`);
       return state;
     case "EDIT_COURSE":
-      console.log(action.payload.course);
-      const newstate = state.map(s =>
-        s.id === action.payload.id
-          ? (s.course = action.payload.course)
-          : s.course
-      );
-      return newstate;
+      console.log(action);
+      console.log(`Course edited with id: ${action.course.id}`);
+      return state;
     default:
       return state;
   }
