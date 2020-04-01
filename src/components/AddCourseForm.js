@@ -47,6 +47,7 @@ const AddCourseForm = ({ categories, createCourse }) => {
         onChange={e => handleChange(e)}
         value={course.price}
       />
+
       <select name="category_id" onChange={e => handleChange(e)}>
         <option>-- Choose category --</option>
         {isLoaded(categories) &&
