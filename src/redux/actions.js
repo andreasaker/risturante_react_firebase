@@ -33,6 +33,22 @@ export const editCourse = course => {
   };
 };
 
+export const removeCourse = id => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("courses")
+      .doc(id)
+      .delete()
+      .then(() => {
+        dispatch({ type: "REMOVE_COURSE", id });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
 export const setEditCourse = (id, status) => ({
   type: "SET_EDIT_COURSE",
   payload: {

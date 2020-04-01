@@ -4,8 +4,10 @@ export const courses = (state = [], action) => {
       console.log(`Course added with name: ${action.course.title}`);
       return state;
     case "EDIT_COURSE":
-      console.log(action);
       console.log(`Course edited with id: ${action.course.id}`);
+      return state;
+    case "REMOVE_COURSE":
+      console.log(`Course removed with id: ${action.id}`);
       return state;
     default:
       return state;
