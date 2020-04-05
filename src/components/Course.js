@@ -4,8 +4,11 @@ import { setEditCourse, removeCourse } from "../redux/actions";
 
 const Course = ({ loggedIn, course, setEdit, handleRemoveCourse }) => {
   return (
-    <li key={course.id}>
-      <strong>{course.title}</strong> {course.content} {course.price}:-
+    <li key={course.id} className="course">
+      <div className="content">
+        {course.title} ..... {course.content}
+      </div>
+      <div className="price">{course.price}:-</div>
       {loggedIn && window.location.href !== process.env.REACT_APP_ROOT_URL && (
         <div>
           <button onClick={() => setEdit(course)}>Edit</button>

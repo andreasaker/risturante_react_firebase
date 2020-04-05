@@ -16,24 +16,44 @@ font-family: 'Kalam', cursive;
 
 
 */
+h1 {
+  font-weight: normal;
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+  margin: -0.8em 0 0 0;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 0.3em;
+}
 
 .App {
   display: grid;
   grid-template-columns: 1em auto 1em;
-  grid-template-rows: 10em auto 1em 5em;
+  grid-template-rows: 13em auto 1em 5em;
 
   text-align: center;
   font-family: "Quicksand", sans-serif;
 }
 
 .head_block {
-  grid-column-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 4;
   grid-row-start: 1;
+  margin: -0.5em -0.5em 0 -0.5em;
+  background-color: #f5f0e3;
 }
 
 .content_block {
   grid-column-start: 2;
   grid-row-start: 2;
+  font-size: 18px;
 }
 
 .footer_block {
@@ -41,6 +61,7 @@ font-family: 'Kalam', cursive;
   grid-column-end: 4;
   grid-row-start: 4;
   background-color: #7e9baf;
+  margin: 0px -0.5em 0 -0.5em;
 }
 .footer_block nav {
   margin-left: 1em;
@@ -50,6 +71,11 @@ font-family: 'Kalam', cursive;
 .footer_block a {
   margin-right: 1em;
   color: white;
+}
+
+.footer_block p {
+  color: white;
+  font-size: 13px;
 }
 
 form {
@@ -123,6 +149,7 @@ ul {
 }
 
 ul li {
+  font-size: 18px;
   list-style: none;
   text-align: left;
 }
@@ -132,4 +159,34 @@ ul li {
   color: #f5f0e3;
   background-color: #ff6f5e;
   padding: 0.5em 0 0.5em 0;
+}
+
+.course {
+  display: grid;
+  grid-template-columns: auto 3em;
+  grid-template-rows: auto;
+}
+
+.course .content {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+}
+
+.course .price {
+  text-align: right;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+}
+
+.call_btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5em 0 0.5em 0;
+  left: 0;
+  background-color: #f0134d;
+  font-size: 30px;
+  color: #ffffff;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 import Footer from "./components/Footer";
 import CategoryList from "./components/CategoryList";
+import CallButton from "./components/CallButton";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <div className="footer_block">
         <Footer />
       </div>
+      <CallButton />
     </div>
   );
 }
