@@ -163,21 +163,40 @@ ul li {
 
 .course {
   display: grid;
-  grid-template-columns: auto 3em;
-  grid-template-rows: auto;
+  grid-template-columns: 0fr 1fr 0fr;
+  grid-template-rows: auto auto;
+  margin-bottom: 0.5em;
 }
 
-.course .content {
+.course .title {
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
+  text-align: left;
+}
+
+.course .point_break {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  border-bottom: 2px dotted #bdbdbd;
+  width: 92%;
+  margin: 0 0.5rem 0.3rem;
+  display: block;
+  content: "";
 }
 
 .course .price {
   text-align: right;
-  grid-column-start: 2;
-  grid-column-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 3;
   grid-row-start: 1;
+}
+
+.course .content {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
 }
 
 .call_btn {

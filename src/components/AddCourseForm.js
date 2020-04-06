@@ -9,16 +9,16 @@ const AddCourseForm = ({ categories, createCourse }) => {
     title: "",
     content: "",
     price: "",
-    category_id: ""
+    category_id: "0",
   };
   const [course, setCourse] = useState(initCourse);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setCourse({ ...course, [name]: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     createCourse(course);
     setCourse(initCourse);
@@ -30,28 +30,32 @@ const AddCourseForm = ({ categories, createCourse }) => {
         type="text"
         name="title"
         placeholder="Title"
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
         value={course.title}
       />
       <input
         type="text"
         name="content"
         placeholder="Content"
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
         value={course.content}
       />
       <input
         type="number"
         name="price"
         placeholder="Price"
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
         value={course.price}
       />
 
-      <select name="category_id" onChange={e => handleChange(e)}>
-        <option>-- Choose category --</option>
+      <select
+        name="category_id"
+        value={course.category_id}
+        onChange={(e) => handleChange(e)}
+      >
+        <option value="0">-- Choose category --</option>
         {isLoaded(categories) &&
-          categories.map(c => {
+          categories.map((c) => {
             return (
               <option key={c.id} value={`${c.id}`}>
                 {c.name}
@@ -59,19 +63,19 @@ const AddCourseForm = ({ categories, createCourse }) => {
             );
           })}
       </select>
-      <button name="add todo" onClick={e => handleSubmit(e)}>
+      <button name="add todo" onClick={(e) => handleSubmit(e)}>
         Add
       </button>
     </form>
   );
 };
 
-const mapStateToProps = state => ({
-  categories: state.firestore.ordered.categories
+const mapStateToProps = (state) => ({
+  categories: state.firestore.ordered.categories,
 });
 
-const mapDispatchToProps = dispatch => ({
-  createCourse: course => dispatch(addCourse(course))
+const mapDispatchToProps = (dispatch) => ({
+  createCourse: (course) => dispatch(addCourse(course)),
 });
 
 export default compose(
