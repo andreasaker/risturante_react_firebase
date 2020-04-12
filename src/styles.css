@@ -61,7 +61,7 @@ h3 {
   grid-column-end: 4;
   grid-row-start: 4;
   background-color: #7e9baf;
-  margin: 0px -0.5em 0 -0.5em;
+  margin: 0px -0.5em -4em -0.5em;
 }
 .footer_block nav {
   margin-left: 1em;
@@ -149,6 +149,12 @@ ul {
 }
 
 ul li {
+  font-size: 14px;
+  list-style: none;
+  text-align: left;
+}
+
+ul li strong {
   font-size: 18px;
   list-style: none;
   text-align: left;
@@ -191,6 +197,7 @@ ul li {
   grid-column-start: 3;
   grid-column-end: 3;
   grid-row-start: 1;
+  font-size: 18px;
 }
 
 .course .content {
@@ -200,7 +207,7 @@ ul li {
 }
 
 .call_btn {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   padding: 0.5em 0 0.5em 0;

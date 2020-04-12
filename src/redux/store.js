@@ -3,7 +3,7 @@ import {
   categories,
   loggedIn,
   setEditCourse,
-  setEditCategory
+  setEditCategory,
 } from "./reducers";
 
 import firebase from "firebase/app";
@@ -13,7 +13,7 @@ import {
   reduxFirestore,
   getFirestore,
   createFirestoreInstance,
-  firestoreReducer
+  firestoreReducer,
 } from "redux-firestore";
 import thunk from "redux-thunk";
 import { getFirebase } from "react-redux-firebase";
@@ -25,13 +25,13 @@ const fbConfig = {
   projectId: "risturante",
   storageBucket: "risturante.appspot.com",
   messagingSenderId: "371988901337",
-  appId: process.env.FB_APP_ID
+  appId: process.env.FB_APP_ID,
 };
 
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: "users",
-  useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
 };
 
 firebase.initializeApp(fbConfig);
@@ -43,13 +43,13 @@ const rootReducer = combineReducers({
   loggedIn,
   setEditCourse,
   setEditCategory,
-  firestore: firestoreReducer // <- needed if using firestore
+  firestore: firestoreReducer, // <- needed if using firestore
 });
 
 const middleware = compose(
   applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-  reduxFirestore(firebase, fbConfig),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  reduxFirestore(firebase, fbConfig) //,
+  //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const initialState = {};
@@ -59,5 +59,5 @@ export const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance
+  createFirestoreInstance,
 };

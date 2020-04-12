@@ -8,7 +8,7 @@ const Course = ({ loggedIn, course, setEdit, handleRemoveCourse }) => {
       <div className="title">
         <strong>{course.title}</strong>
       </div>
-      <span class="point_break"></span>
+      <span className="point_break"></span>
       <div className="price">{course.price}:-</div>
       <div className="content">{course.content}</div>
       {loggedIn && window.location.href !== process.env.REACT_APP_ROOT_URL && (
