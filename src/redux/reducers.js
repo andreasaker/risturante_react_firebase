@@ -17,6 +17,7 @@ export const courses = (state = [], action) => {
 export const setEditCourse = (state = { id: "", status: false }, action) => {
   switch (action.type) {
     case "SET_EDIT_COURSE":
+      window.scrollTo(0, 0);
       return { id: action.payload.id, status: action.payload.status };
     default:
       return state;
@@ -42,6 +43,7 @@ export const categories = (state = [], action) => {
 export const setEditCategory = (state = { id: "", status: false }, action) => {
   switch (action.type) {
     case "SET_EDIT_CATEGORY":
+      window.scrollTo(0, 0);
       return { id: action.payload.id, status: action.payload.status };
     default:
       return state;

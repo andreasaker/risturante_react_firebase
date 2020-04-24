@@ -5,12 +5,12 @@ import { addCategory } from "../redux/actions";
 const AddCategoryForm = ({ addCategory }) => {
   const [name, setName] = useState("");
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const newName = e.target.value;
     setName(newName);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addCategory(name);
     setName("");
@@ -18,24 +18,21 @@ const AddCategoryForm = ({ addCategory }) => {
 
   return (
     <form>
-      <p>Add new category</p>
+      <p>Add new Category</p>
       <input
         type="text"
         name="name"
         placeholder="Category name"
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
         value={name}
       />
-      <button onClick={e => handleSubmit(e)}>Add</button>
+      <button onClick={(e) => handleSubmit(e)}>Add</button>
     </form>
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  addCategory: category => dispatch(addCategory(category))
+const mapDispatchToProps = (dispatch) => ({
+  addCategory: (category) => dispatch(addCategory(category)),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddCategoryForm);
+export default connect(null, mapDispatchToProps)(AddCategoryForm);

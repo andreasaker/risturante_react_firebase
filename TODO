@@ -2,4 +2,9 @@
 Todo:
   ✔ Chrome browser gets error @done(20-04-12 17:03)
   ✔ MS Edge error: TypeError: Unable to get property 'apply' of undefined or null reference @done(20-04-12 17:03) //was coused by redux plugin code in the composer function
+  ✔ fonts needs fixing @done(20-04-12 17:12)
+  ☐ Mobile responsive
+  ☐ Pad responsive
+  ☐ Desktop responsive
+  ☐ Add tests
   ☐ 

@@ -35,10 +35,10 @@ const Admin = ({ loggedIn, editCourse, editCategory }) => {
   );
 };
 
-const mapStatetoProps = state => ({
+const mapStatetoProps = (state) => ({
   loggedIn: state.loggedIn,
   editCourse: state.setEditCourse.status,
-  editCategory: state.setEditCategory.status
+  editCategory: state.setEditCategory.status,
 });
 
 export default connect(mapStatetoProps)(Admin);

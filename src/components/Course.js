@@ -12,7 +12,7 @@ const Course = ({ loggedIn, course, setEdit, handleRemoveCourse }) => {
       <div className="price">{course.price}:-</div>
       <div className="content">{course.content}</div>
       {loggedIn && window.location.href !== process.env.REACT_APP_ROOT_URL && (
-        <div>
+        <div className="course_control">
           <button onClick={() => setEdit(course)}>Edit</button>
           <button onClick={() => handleRemoveCourse(course.id)}>Delete</button>
         </div>

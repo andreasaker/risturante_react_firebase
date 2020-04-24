@@ -26,6 +26,7 @@ const AddCourseForm = ({ categories, createCourse }) => {
 
   return (
     <form>
+      <p>Add new Course</p>
       <input
         type="text"
         name="title"
