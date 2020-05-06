@@ -5,7 +5,7 @@ import { setEditCategory, removeCategory } from "../redux/actions";
 
 const Category = ({ category, setEdit, removeCat, loggedIn }) => {
   return (
-    <li key={category.id}>
+    <li className={`category`} key={category.id}>
       <h3>{category.name}</h3>
       {loggedIn && window.location.href !== process.env.REACT_APP_ROOT_URL && (
         <div className="category_control">

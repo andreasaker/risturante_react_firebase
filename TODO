@@ -3,8 +3,11 @@ Todo:
   ✔ Chrome browser gets error @done(20-04-12 17:03)
   ✔ MS Edge error: TypeError: Unable to get property 'apply' of undefined or null reference @done(20-04-12 17:03) //was coused by redux plugin code in the composer function
   ✔ fonts needs fixing @done(20-04-12 17:12)
-  ☐ Mobile responsive
-  ☐ Pad responsive
-  ☐ Desktop responsive
+  ✔ Mobile responsive @done(20-05-06 21:08)
+  ✔ Pad responsive @done(20-05-06 21:08)
+  ✔ Desktop responsive @done(20-05-06 21:09)
   ☐ Add tests
-  ☐ 
+  ☐ In Admin, make buttons appear/dissaper when hover
+  ☐ Make admin fields bigger
+  ☐ Add order to categories
+  ☐ Add drag and drop ordering of categories
