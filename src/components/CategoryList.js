@@ -10,15 +10,15 @@ const CategoryList = ({ categories }) => {
   }
   return (
     <ul className="category_list">
-      {categories.map(cat => {
+      {categories.map((cat) => {
         return <Category key={cat.id} category={cat} />;
       })}
     </ul>
   );
 };
 
-const mapStateToProps = state => ({
-  categories: state.firestore.ordered.categories
+const mapStateToProps = (state) => ({
+  categories: state.firestore.ordered.categories,
 });
 
 export default compose(
