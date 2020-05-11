@@ -13,7 +13,7 @@ const Admin = ({ loggedIn, editCourse, editCategory }) => {
   return (
     <div className="App">
       <div className="head_block">
-        <h1>Resturante</h1>
+        <h1>Risturante</h1>
         <h2>Start adding food!</h2>
       </div>
       <div className="content_block">
