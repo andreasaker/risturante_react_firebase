@@ -6,8 +6,8 @@ Todo:
   ✔ Mobile responsive @done(20-05-06 21:08)
   ✔ Pad responsive @done(20-05-06 21:08)
   ✔ Desktop responsive @done(20-05-06 21:09)
-  ☐ Add tests
-  ☐ In Admin, make buttons appear/dissaper when hover
+  ✔ Add tests @done(20-05-11 10:08)
+  ✔ In Admin, make buttons appear/dissaper when hover @done(20-05-11 16:17)
   ☐ Make admin fields bigger
   ☐ Add order to categories
   ☐ Add drag and drop ordering of categories

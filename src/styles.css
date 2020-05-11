@@ -264,6 +264,7 @@ ul li strong {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 3;
+  opacity: 1;
 }
 
 .call_btn {
@@ -301,6 +302,22 @@ ul li strong {
   .category_list h3 {
     width: 50%;
     float: left;
+  }
+
+  .course {
+    z-index: 1;
+    width: 100%;
+  }
+
+  .course_control {
+    position: absolute;
+    padding-top: 3em;
+    width: 26%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .course_control:hover {
+    opacity: 1;
   }
 
   .call_btn {
