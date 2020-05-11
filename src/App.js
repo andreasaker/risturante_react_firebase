@@ -3,6 +3,7 @@ import "./styles.css";
 import Footer from "./components/Footer";
 import CategoryList from "./components/CategoryList";
 import CallButton from "./components/CallButton";
+import ErrorBoundary from "./components/ErrorBoundrary";
 
 export default function App() {
   return (
@@ -12,12 +13,18 @@ export default function App() {
         <h2>Welcome!</h2>
       </div>
       <div className="content_block">
-        <CategoryList />
+        <ErrorBoundary>
+          <CategoryList />
+        </ErrorBoundary>
       </div>
       <div className="footer_block">
-        <Footer />
+        <ErrorBoundary>
+          <Footer />
+        </ErrorBoundary>
       </div>
-      <CallButton />
+      <ErrorBoundary>
+        <CallButton />
+      </ErrorBoundary>
     </div>
   );
 }

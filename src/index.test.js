@@ -1,7 +1,8 @@
 import React from "react";
 import App from "./App";
 import Admin from "./Admin";
-import { shallow } from "enzyme";
+import { BrowserRouter as Router } from "react-router-dom";
+import { shallow, mount } from "enzyme";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import {
@@ -14,7 +15,7 @@ import {
 
 describe("Testing index page components", function () {
   const initialState = {};
-  const storesss = combineReducers({
+  const reducers = combineReducers({
     courses,
     categories,
     loggedIn,
@@ -22,16 +23,22 @@ describe("Testing index page components", function () {
     setEditCategory,
   });
 
-  const store = createStore(storesss, initialState);
+  const store = createStore(reducers, initialState);
 
   it("Renders App component without crashing", () => {
-    shallow(<App />);
+    mount(
+      <Router>
+        <App />
+      </Router>
+    );
   });
 
   it("Renders Admin component without crashing", () => {
-    shallow(
+    mount(
       <Provider store={store}>
-        <Admin />
+        <Router>
+          <Admin />
+        </Router>
       </Provider>
     );
   });
