@@ -16,11 +16,11 @@ FB_APP_ID= (firebase app id)<br/>
 
 **Firebase config**<br/>
 
-categories<br/>
-&nbsp;&nbsp;name<br/>
-courses<br/>
-&nbsp;&nbsp;category_id<br/>
-&nbsp;&nbsp;content<br/>
-&nbsp;&nbsp;id<br/>
-&nbsp;&nbsp;price<br/>
-&nbsp;&nbsp;title<br/>
+**categories**<br/>
+&nbsp;&nbsp;-name<br/>
+**courses**<br/>
+&nbsp;&nbsp;-category_id<br/>
+&nbsp;&nbsp;-content<br/>
+&nbsp;&nbsp;-id<br/>
+&nbsp;&nbsp;-price<br/>
+&nbsp;&nbsp;-title<br/>
